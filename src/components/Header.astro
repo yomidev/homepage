@@ -1,3 +1,64 @@
-<div class="w-full bg-gray-800 text-white">
-  <h1>Hola</h1>
-</div>
+---
+
+---
+
+<header class="flex justify-between items-center mb-8 relative p-5">
+  <a href="/">
+    <img src="/images/logo.svg" alt="logo" class="w-10" />
+  </a>
+
+  <nav class="hidden md:flex gap-8 text-gray-500">
+    <a class="hover:text-red-400 cursor-pointer">Home</a>
+    <a class="hover:text-red-400 cursor-pointer">New</a>
+    <a class="hover:text-red-400 cursor-pointer">Popular</a>
+    <a class="hover:text-red-400 cursor-pointer">Trending</a>
+    <a class="hover:text-red-400 cursor-pointer">Categories</a>
+  </nav>
+
+  <button id="openMenu" class="md:hidden">
+    <img src="/images/icon-menu.svg" alt="menu" />
+  </button>
+</header>
+
+<div id="overlay" class="fixed inset-0 bg-black/50 hidden z-40"></div>
+
+<aside
+  id="mobileMenu"
+  class="fixed top-0 right-0 w-64 h-full bg-white p-6 translate-x-full transition-transform duration-300 z-50"
+>
+  <div class="flex justify-end mb-10">
+    <button id="closeMenu">
+      <img src="/images/icon-menu-close.svg" alt="close" />
+    </button>
+  </div>
+
+  <nav class="flex flex-col gap-6 text-lg">
+    <a class="hover:text-red-400">Home</a>
+    <a class="hover:text-red-400">New</a>
+    <a class="hover:text-red-400">Popular</a>
+    <a class="hover:text-red-400">Trending</a>
+    <a class="hover:text-red-400">Categories</a>
+  </nav>
+</aside>
+
+<script>
+  const openBtn = document.getElementById("openMenu");
+  const closeBtn = document.getElementById("closeMenu");
+  const menu = document.getElementById("mobileMenu");
+  const overlay = document.getElementById("overlay");
+
+  openBtn.addEventListener("click", () => {
+    menu.classList.remove("translate-x-full");
+    overlay.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    menu.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    menu.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+  });
+</script>
